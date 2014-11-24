@@ -14,10 +14,10 @@ class BigHeavyPixel(gamelib.SimpleGame):
         super(BigHeavyPixel, self).init()
 
     def update(self):
-        self.blackcat.updatePos()
+        self.blackcat.updatePos(self.surface)
 
     def render(self, surface):
-        self.blackcat.render(surface)
+        self.blackcat.render(self.surface)
 
 def main():
     game = BigHeavyPixel()
