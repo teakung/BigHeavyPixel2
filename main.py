@@ -4,23 +4,53 @@ from pygame.locals import *
 import gamelib
 from elements import *
 
+
+Rains = []
+
 class BigHeavyPixel(gamelib.SimpleGame):
     windows_width = 1280
     windows_height = 720
     windows_size = (windows_width,windows_height)
     def __init__(self):
         super(BigHeavyPixel, self).__init__('BigHeavyPixel', (0,0,0),BigHeavyPixel.windows_size)
-        self.blackcat = Rain(pos = (50,50),speed = (0,10))
-        self.player = Player(pos = (50,50))
+        self.player = Player(pos = (BigHeavyPixel.windows_width/2,BigHeavyPixel.windows_height/2))
 
     def init(self):
         super(BigHeavyPixel, self).init()
 
     def update(self):
-        self.blackcat.updatePos(self.surface)
+        if len(Rains) < 20:
+            Rains.append(Rain((random.randint(0, BigHeavyPixel.windows_width),(random.randint(0, BigHeavyPixel.windows_height)))))
+        for i in Rains:
+            i.updatePos()
+            # i.setVy(10)
+            # i.setVx(0)
+
+        if self.is_key_pressed(K_UP):
+            self.player.move_up()
+        elif self.is_key_pressed(K_DOWN):
+            self.player.move_down()
+        elif self.is_key_pressed(K_LEFT):
+            self.player.move_left()
+        elif self.is_key_pressed(K_RIGHT):
+            self.player.move_right()
+        elif self.is_key_pressed(K_w):
+            for i in Rains:
+                i.setVy(2)
+        elif self.is_key_pressed(K_s):
+            for i in Rains:
+                i.setVy(15)
+        elif self.is_key_pressed(K_a):
+            for i in Rains:
+                i.setVx(2)
+        elif self.is_key_pressed(K_d):
+            for i in Rains:
+                i.setVx(-2)
+
 
     def render(self, surface):
-        self.blackcat.render(self.surface)
+        for i in Rains:
+            i.render(self.surface)
         self.player.render(self.surface)
 
 def main():
