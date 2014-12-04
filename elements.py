@@ -37,7 +37,7 @@ class Rain(object):
         pygame.draw.rect(surface,(100,100,100),self.rect)
 
     def setVy(self,newVy):
-        self.vx = newVy
+        self.vy = newVy
 
     def setVx(self,newVx):
         self.vx = newVx

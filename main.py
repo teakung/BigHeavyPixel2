@@ -23,30 +23,30 @@ class BigHeavyPixel(gamelib.SimpleGame):
             Rains.append(Rain((random.randint(0, BigHeavyPixel.windows_width),(random.randint(0, BigHeavyPixel.windows_height)))))
         for i in Rains:
             i.updatePos()
-            # i.setVy(10)
-            # i.setVx(0)
+            i.setVy(10)
+            i.setVx(0)
 
         if self.is_key_pressed(K_UP):
             self.player.move_up()
-        elif self.is_key_pressed(K_DOWN):
+        if self.is_key_pressed(K_DOWN):
             self.player.move_down()
-        elif self.is_key_pressed(K_LEFT):
+        if self.is_key_pressed(K_LEFT):
             self.player.move_left()
-        elif self.is_key_pressed(K_RIGHT):
+        if self.is_key_pressed(K_RIGHT):
             self.player.move_right()
-        elif self.is_key_pressed(K_w):
+
+        if self.is_key_pressed(K_w):
             for i in Rains:
-                i.setVy(2)
-        elif self.is_key_pressed(K_s):
+                i.setVy(5)
+        if self.is_key_pressed(K_s):
             for i in Rains:
                 i.setVy(15)
-        elif self.is_key_pressed(K_a):
+        if self.is_key_pressed(K_a):
             for i in Rains:
                 i.setVx(2)
-        elif self.is_key_pressed(K_d):
+        if self.is_key_pressed(K_d):
             for i in Rains:
                 i.setVx(-2)
-
 
     def render(self, surface):
         for i in Rains:
