@@ -5,6 +5,8 @@ import pyganim
 
 rain_width = 50
 rain_height = 100
+sprite_width = 57
+sprtie_height = 81
 
 class Rain(object):
 
@@ -42,7 +44,15 @@ class Rain(object):
     def setVx(self,newVx):
         self.vx = newVx
 
+    def isCollide(self,player):
+        if player.x<=self.x+rain_width and player.x>=self.x-rain_height:
+            if player.y<=self.y+rain_height and player.y>=self.y:
+                return True
+            
+        
+
 class Player(object):
+
 
     def __init__(self,pos,speed=(10,10)):
         self.x, self.y = pos
@@ -54,7 +64,7 @@ class Player(object):
                                  ('blackcatSprite/5.png', 0.1),
                                 ])
         self.ani.play()
-        # self.rect = self.image.get_rect()
+        self.rect = Rect(self.x, self.y , sprite_width, sprtie_height)
         
     def move_up(self):
         self.y -= self.vy
