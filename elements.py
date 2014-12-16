@@ -7,6 +7,7 @@ rain_width = 50
 rain_height = 100
 sprite_width = 57
 sprtie_height = 81
+hp = 100
 
 class Rain(object):
 
@@ -64,6 +65,7 @@ class Player(object):
                                  ('blackcatSprite/5.png', 0.1),
                                 ])
         self.ani.play()
+        self.hp = hp
         self.rect = Rect(self.x, self.y , sprite_width, sprtie_height)
         
     def move_up(self):
